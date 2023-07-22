@@ -1,0 +1,43 @@
+
+/**
+ * set style default element.
+ *
+ * map content: label, input, section, primary color, default config background image
+ */
+@import './externals/generals/default.css';
+
+
+
+/**
+ * existing className for styling element.
+ *
+ * map content: form-input, btn.
+ */
+@import './externals/generals/elements.css';
+
+
+
+/**
+ * existing className for styling components.
+ *
+ * map content: modal, dropdown, card, pan-menu, mark.
+ */
+@import './externals/generals/components.css';
+
+
+
+/**
+ * exsiting className for table view.
+ *
+ * map content: table, table-carded, table-striped.
+ */
+@import './externals/customs/table.css';
+
+
+
+/**
+ * css variable and tailwind builder.
+ *
+ * map content: color variable, font size variable, delay variable, border radius variable.
+ */
+@import './externals/globals.css';

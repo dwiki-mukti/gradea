@@ -1,0 +1,78 @@
+/**
+ *
+ *
+ *
+ * MODAL
+ */
+
+.modal {
+  @apply pb-16 pt-2 fixed inset-0 z-20 flex overflow-auto;
+  /* @apply bg-white/30 backdrop-blur-sm; */
+  @apply bg-black/50;
+}
+
+/**
+ *
+ *
+ *
+ * CARD
+ */
+
+.card {
+  @apply w-full bg-white rounded-xl shadow border;
+}
+
+.card-header {
+  @apply flex justify-between items-center pt-6 pb-4;
+}
+
+.card-title {
+  @apply text-xl grow capitalize;
+}
+
+.card-header,
+.card-body,
+.card-footer {
+  @apply px-6;
+}
+
+.card-footer {
+  @apply flex items-center py-6;
+}
+
+/**
+ *
+ *
+ *
+ * PAN MENU
+ */
+
+.pan-menu {
+  @apply flex border-b overflow-auto;
+}
+
+.pan-menu > .pan-link {
+  @apply px-8 py-3 min-w-[8rem] text-center border-b-2 border-transparent text-gray-600 whitespace-nowrap;
+}
+
+.pan-menu > .pan-link:hover,
+.pan-menu > .pan-link.active {
+  color: var(--color-primary);
+}
+
+.pan-menu > .pan-link.active {
+  border-color: var(--color-primary);
+}
+
+/**
+ *
+ *
+ *
+ * MARK
+ */
+
+.mark {
+  @apply w-[18px] aspect-square rounded-full flex items-center justify-center;
+  @apply text-[10px] text-white font-semibold truncate;
+  background-color: var(--color-primary);
+}

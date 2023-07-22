@@ -1,0 +1,37 @@
+.radio-card > label {
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  transition: var(--my-delay-2);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.radio-card > label > .radio-check,
+.radio-card > label > .radio-check > svg {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.radio-card > label > .radio-check {
+  opacity: 0;
+  color: #fff;
+}
+
+.radio-card input:checked + label .radio-check {
+  opacity: 1;
+}
+
+.radio-card .radio-check .bg-radio-check {
+  background: var(--color-primary);
+  transform: rotate(45deg);
+  height: 50px;
+  width: 25px;
+  margin-top: -18px;
+  margin-left: -5px;
+}

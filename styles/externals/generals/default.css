@@ -1,0 +1,60 @@
+/**
+ *
+ *
+ *
+ * DEFAULT
+ */
+
+textarea,
+input {
+  @apply block;
+}
+
+select:focus,
+textarea:focus,
+input:focus,
+.input-form-active {
+  @apply outline-none;
+}
+
+section,
+.section {
+  @apply px-[var(--px-mobile)] lg:px-[var(--px-desktop)];
+}
+
+/**
+ *
+ *
+ *
+ * PRIMARY COLOR
+ */
+.bg-primary,
+.hover\:bg-primary:hover {
+  background-color: var(--color-primary);
+}
+
+.hover\:text-primary:hover,
+.text-primary {
+  color: var(--color-primary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+/**
+ *
+ *
+ *
+ * BACKGROUND IMAGE 
+ */
+
+.bg-image,
+.bg-profile {
+  background-position: center 0;
+  @apply bg-no-repeat bg-cover bg-gray-600/50;
+}
+
+.bg-profile {
+  @apply rounded-[50%] aspect-square block bg-gray-600/50 h-[1.75rem] text-center;
+}

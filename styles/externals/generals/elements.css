@@ -1,0 +1,103 @@
+/**
+ *
+ *
+ *
+ * INPUT FORM 
+ */
+.invalid-message {
+  @apply text-red-500 text-xs mt-1;
+}
+
+.input-group {
+  @apply mt-4;
+}
+
+.input-group > label {
+  @apply bg-white inline-block capitalize cursor-pointer;
+  @apply ml-2 translate-y-[9px] text-xs px-1 font-semibold;
+  @apply md:ml-0 md:mb-[6px] md:translate-y-0 md:text-base;
+  color: var(--color-label);
+}
+
+.input-group > input {
+  @apply w-full bg-white;
+  @apply h-[3rem] px-3 border rounded-md;
+  border-color: var(--color-border);
+}
+
+select:focus,
+textarea:focus,
+input:focus,
+.input-form-active {
+  @apply outline-none;
+}
+
+select:not(:disabled):not(.input-form-disabled):focus,
+textarea:not(:disabled):not(.input-form-disabled):focus,
+input:not(:disabled):not(.input-form-disabled):focus,
+.input-form-active {
+  border-color: var(--color-primary);
+}
+
+textarea:disabled,
+input:disabled,
+.input-form-disabled {
+  @apply cursor-default;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/**
+ *
+ *
+ *
+ * BUTTON 
+ */
+
+.btn {
+  @apply inline-flex items-center justify-center;
+  @apply px-4 pt-[1px] h-[2.5rem] rounded-lg cursor-pointer;
+  @apply text-xs capitalize whitespace-nowrap;
+  @apply border shadow border-transparent text-white;
+  background-color: var(--color-primary);
+}
+.btn-outline {
+  @apply bg-transparent shadow-none border-gray-400;
+  color: inherit;
+}
+
+.btn-disabled,
+.btn:disabled,
+button:disabled {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border-color: transparent !important;
+  cursor: not-allowed;
+}
+
+/**
+ *
+ *
+ *
+ * BTN LOADING 
+ */
+.btn-loading {
+  @apply relative overflow-hidden;
+}
+.btn-loading::before {
+  content: "";
+  @apply absolute inset-[0] bg-black/20;
+}
+.btn-loading::after {
+  content: "";
+  @apply absolute w-[16px] aspect-square border rounded-full shadow-md;
+  border-width: 3px;
+  border-color: #fff #fff #fff transparent;
+  animation: rotate-360 1.2s linear infinite;
+}
+@keyframes rotate-360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
