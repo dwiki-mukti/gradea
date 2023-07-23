@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
    * Importing CSS
    */
   if (prefix == 'admin') {
-    import('@/styles/externals/panels/corePanel.css')
+    import('@/styles/externals/corePanel.css')
   }
   import('@/styles/externals.scss')
 

@@ -80,7 +80,6 @@ function BookPage() {
                                     name: 'prolog',
                                     title: 'prolog',
                                     type: 'textarea',
-                                    placeholder: 'Masukkan Prolog',
                                     validations: { required: true }
                                 }
                             ]}

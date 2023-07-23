@@ -3,17 +3,9 @@
  * set style default element.
  *
  * map content: label, input, section, primary color, default config background image
- */
-@import './externals/generals/default.css';
-
-
-
-/**
- * existing className for styling element.
- *
  * map content: form-input, btn.
  */
-@import './externals/generals/elements.css';
+@import './externals/default/elements.css';
 
 
 
@@ -22,7 +14,7 @@
  *
  * map content: modal, dropdown, card, pan-menu, mark.
  */
-@import './externals/generals/components.css';
+@import './externals/default/components.css';
 
 
 
@@ -31,7 +23,7 @@
  *
  * map content: table, table-carded, table-striped.
  */
-@import './externals/customs/table.css';
+@import './externals/additionalComponents/table.css';
 
 
 
