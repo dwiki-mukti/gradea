@@ -4,10 +4,6 @@
  *
  * INPUT FORM 
  */
-.invalid-message {
-  @apply text-red-500 text-xs mt-1;
-}
-
 .input-group {
   @apply mt-4;
 }
@@ -15,14 +11,23 @@
 .input-group > label {
   @apply bg-white inline-block capitalize cursor-pointer;
   @apply ml-2 translate-y-[9px] text-xs px-1 font-semibold;
-  @apply md:ml-0 md:mb-[6px] md:translate-y-0 md:text-base;
+  @apply md:ml-0 md:mb-1 md:translate-y-0 md:text-sm;
   color: var(--color-label);
 }
 
+.input-group > textarea,
 .input-group > input {
   @apply w-full bg-white;
-  @apply h-[3rem] px-3 border rounded-md;
+  @apply px-3 border rounded-md;
   border-color: var(--color-border);
+}
+
+.input-group > textarea {
+  @apply h-[5rem];
+}
+
+.input-group > input {
+  @apply h-[2.5rem];
 }
 
 select:focus,
@@ -32,10 +37,10 @@ input:focus,
   @apply outline-none;
 }
 
-select:not(:disabled):not(.input-form-disabled):focus,
-textarea:not(:disabled):not(.input-form-disabled):focus,
-input:not(:disabled):not(.input-form-disabled):focus,
-.input-form-active {
+:not(.input-group-invalid) > select:not(:disabled):focus,
+:not(.input-group-invalid) > textarea:not(:disabled):focus,
+:not(.input-group-invalid) > input:not(:disabled):focus,
+:not(.input-group-invalid) > .input-form-active {
   border-color: var(--color-primary);
 }
 
@@ -46,22 +51,45 @@ input:disabled,
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
+.input-group-invalid > textarea,
+.input-group-invalid > input {
+  @apply border-red-500;
+}
+
+.invalid-message {
+  @apply text-red-500 text-xs mt-2;
+}
+
 /**
  *
  *
  *
  * BUTTON 
  */
-
+.btn-outline,
+.btn-square,
 .btn {
   @apply inline-flex items-center justify-center;
-  @apply px-4 pt-[1px] h-[2.5rem] rounded-lg cursor-pointer;
+  @apply h-[2.5rem] cursor-pointer;
+  @apply border;
+}
+.btn {
+  @apply px-4 pt-[1px] rounded-lg;
   @apply text-xs capitalize whitespace-nowrap;
-  @apply border shadow border-transparent text-white;
+  @apply shadow border-transparent text-white;
   background-color: var(--color-primary);
 }
+.btn-square {
+  @apply shadow-sm bg-transparent border-gray-300 aspect-square rounded-full;
+  @apply hover:shadow-inner;
+  /* @apply hover:bg-slate-50/20; */
+}
+.btn-square:hover > * {
+  @apply drop-shadow-sm scale-95;
+  @apply saturate-[3];
+}
 .btn-outline {
-  @apply bg-transparent shadow-none border-gray-400;
+  @apply bg-transparent shadow-none rounded-lg;
   color: inherit;
 }
 

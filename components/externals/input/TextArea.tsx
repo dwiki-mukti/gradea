@@ -2,9 +2,9 @@ import { typeStateInput, typeValidations } from '@/interfaces/externals/input'
 import React, { DetailedHTMLProps, Dispatch, FormEvent, InputHTMLAttributes, ReactNode, SetStateAction, useEffect } from 'react'
 import validator from './validatorUtils'
 
-export interface typeInputTextProps extends Omit<DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
+export interface typeTextAreaProps extends Omit<DetailedHTMLProps<
+    InputHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
 >, 'value' | 'defaultValue'> {
     label?: ReactNode,
     setter: Dispatch<SetStateAction<typeStateInput | ((prev: typeStateInput) => void)>>,
@@ -14,7 +14,7 @@ export interface typeInputTextProps extends Omit<DetailedHTMLProps<
     name: string,
 }
 
-function InputText({
+function TextArea({
     label,
     setter,
     getter,
@@ -27,12 +27,12 @@ function InputText({
     id,
 
     ...props
-}: typeInputTextProps) {
+}: typeTextAreaProps) {
 
-    function onChangeValue(e: FormEvent<HTMLInputElement>) {
+    function onChangeValue(e: FormEvent<HTMLTextAreaElement>) {
         if (onInput) onInput(e)
         setter((prev: typeStateInput) => {
-            const valueInput = (e.target as HTMLInputElement).value
+            const valueInput = (e.target as HTMLTextAreaElement).value
             const invalidMessages: string[] = validations ? validator({ validations, value: valueInput }) : []
 
             return ({
@@ -46,14 +46,13 @@ function InputText({
     return (
         <div className={`input-group ${className} ${getter?.invalids?.[name]?.length ? 'input-group-invalid' : ''}`}>
             {(!noLabel) && (<label htmlFor={id ?? name}>{label ?? name}</label>)}
-            <input
+            <textarea
                 value={getter?.values?.[name] ?? ''}
                 onInput={onChangeValue}
                 id={id ?? name}
                 name={name}
                 {...props}
-                type="text"
-            />
+            ></textarea>
             {Boolean(getter?.invalids?.[name]?.length) && (
                 <div className='invalid-message'>{getter?.invalids?.[name][0]}</div>
             )}
@@ -61,4 +60,4 @@ function InputText({
     )
 }
 
-export default InputText
+export default TextArea

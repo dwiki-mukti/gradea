@@ -1,3 +1,12 @@
+:root {
+  /**
+   *
+   *
+   *
+   * VARIABLE
+   */
+  --width-sidebar: 19rem;
+}
 /**
  *
  *
@@ -12,6 +21,11 @@ body {
   @apply max-w-screen-2xl mx-auto;
   /* @apply min-[2880px]:border min-[2880px]:mt-4; */
 }
+
+.container-fluid{
+  @apply grow overflow-auto;
+}
+
 /**
  *
  *
@@ -39,14 +53,15 @@ body {
  * SIDEBAR 
  */
 .sidebar {
-  @apply fixed inset-y-0 z-[10] bg-white border-r w-[19rem] h-full min-h-screen overflow-auto pb-8;
+  @apply fixed inset-y-0 z-[10] bg-white border-r h-full min-h-screen overflow-auto pb-8;
   @apply lg:relative;
   /* @apply min-[2880px]:min-h-full; */
+  width: var(--width-sidebar);
   transition: margin-left var(--delay-fast) ease, width var(--delay-fast) ease;
 }
 
 .sidebar-collapse .sidebar {
-  margin-left: -19rem;
+  margin-left: calc(var(--width-sidebar) * -1);
 }
 
 .sidebar-overlay {
@@ -69,7 +84,7 @@ body {
 }
 
 .sidebar-item.active {
-  @apply bg-blue-100/50;
+  @apply bg-blue-200/20;
 }
 
 .sidebar-item-has-child-open {
@@ -85,7 +100,7 @@ body {
 }
 
 .sidebar-link {
-  @apply flex items-center cursor-pointer gap-2 py-1 capitalize;
+  @apply flex items-center gap-2 py-2 cursor-pointer capitalize;
 }
 
 .sidebar-child > .sidebar-link {

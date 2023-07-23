@@ -1,9 +1,12 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
 
 
 function SidebarAdminApp() {
+    const router = useRouter()
+    const prefix = String(router.pathname).split('/')
 
     useEffect(() => {
         /**
@@ -27,16 +30,23 @@ function SidebarAdminApp() {
     return (
         <>
             <aside className="sidebar">
-                <div className="text-center py-6">
-                    <div className="mx-auto h-[5rem] bg-profile"></div>
+                {/* <div className="text-center py-6">
+                    <div className="mx-auto h-[4.5rem] bg-profile"></div>
                     <div>
-                        <div className="mt-3 text-lg">SMKN 1 JENANGAN</div>
-                        <div className="text-xs font-light">DATA INDUK SIMBAH</div>
+                        <div className="mt-3 text-lg">TITLE APP</div>
+                        <div className="text-xs font-light mt-2">Formal & Fresh Admin Panel</div>
+                    </div>
+                </div> */}
+                <div className="px-8 py-6 flex items-center gap-2">
+                    {/* <div className="h-[3.5rem] bg-profile"></div> */}
+                    <div>
+                        <div className="text-lg mt-2">TITLE APP</div>
+                        <div className="text-sm mt-2 font-light">Formal & Fresh Panel Admin</div>
                     </div>
                 </div>
                 <div>
-                    <div className="sidebar-item">
-                        <Link href={`/admin/buku`} className="sidebar-link">
+                    <div className={`sidebar-item ${['buku'].includes(prefix[2]) ? 'active' : ''}`}>
+                        <Link href={`/admin/buku`} className={`sidebar-link`}>
                             <div className="flex items-center gap-4">
                                 <i className="mt-[2px] bi bi-book"></i>
                                 <div className="capitalize">Buku</div>
@@ -44,7 +54,7 @@ function SidebarAdminApp() {
                         </Link>
                     </div>
                     <div className="sidebar-item sidebar-item-has-child">
-                        <div className="sidebar-link">
+                        <div className={`sidebar-link`}>
                             <div className="flex items-center gap-4">
                                 <i className="bi bi-easel"></i>
                                 <div className="capitalize">Sidebar Has Child</div>
@@ -56,11 +66,11 @@ function SidebarAdminApp() {
                             </div>
                         </div >
                         <div className="sidebar-child">
-                            <Link href={`#`} className="sidebar-link">
+                            <Link href={`#`} className={`sidebar-link`}>
                                 <i className="text-xs bi bi-dash"></i>
                                 <div className="capitalize">child 1</div>
                             </Link>
-                            <Link href={`#`} className="sidebar-link">
+                            <Link href={`#`} className={`sidebar-link`}>
                                 <i className="text-xs bi bi-dash"></i>
                                 <div className="capitalize">child 2</div>
                             </Link>

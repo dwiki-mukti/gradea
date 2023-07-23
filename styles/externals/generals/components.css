@@ -7,8 +7,8 @@
 
 .modal {
   @apply pb-16 pt-2 fixed inset-0 z-20 flex overflow-auto;
-  /* @apply bg-white/30 backdrop-blur-sm; */
-  @apply bg-black/50;
+  @apply bg-white/30 backdrop-blur-sm shadow-lg;
+  /* @apply bg-black/50; */
 }
 
 /**

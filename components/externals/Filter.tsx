@@ -1,22 +1,22 @@
 import React, { Dispatch, ReactNode, SetStateAction, useState } from 'react'
 import Button from './Button'
 import Mark from './Mark'
-import { typeStateInput } from '@/interfaces/formInput'
+import { typeStateInput } from '@/interfaces/externals/input'
 import Modal from './popup/Modal'
 import HeaderModal from './popup/HeaderModal'
 
 
 
-interface typeFilter {
+interface typeFilterProps {
     setter: Dispatch<SetStateAction<typeStateInput | ((prev: typeStateInput) => void)>>,
     getter: typeStateInput,
 }
 
-function Filter({ setter, getter }: typeFilter) {
+function Filter({ setter, getter }: typeFilterProps) {
     const [ShowMoadal, setShowMoadal] = useState(false)
     return (<>
         <Button
-            className='h-[2.25rem] btn-outline gap-1'
+            className='h-[2.25rem] btn-outline border-gray-400 gap-1'
             onClick={() => { setShowMoadal(true) }}
             text={<>
                 {false ? (

@@ -1,13 +1,14 @@
 import Breadcrumb from '@/components/externals/Breadcrumb'
 import HeaderAdminApp from '@/components/internals/adminApp/HeaderAdminApp'
 import SidebarAdminApp from '@/components/internals/adminApp/SidebarAdminApp'
-import { typeBreadcumbValue } from '@/interfaces/breadcumb'
-import { typeUserAuthed } from '@/interfaces/userAuthed'
-import { AppContext } from '@/utils/jsx'
+import { typeBreadcumbProps } from '@/interfaces/externals/breadcumb'
+import { typeUserAuthed } from '@/interfaces/externals/userAuthed'
+import { typeDataBookLists } from '@/interfaces/internals/dataBookLists'
+import { AppContext } from '@/utils/frontend'
 import type { AppProps } from 'next/app'
 import Error from 'next/error'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -18,8 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
    */
   const [UserAuthed, setUserAuthed] = useState<typeUserAuthed>({});
   const [StatusCode, setStatusCode] = useState<number>(200);
-  const [BreadcumbValue, setBreadcumbValue] = useState<typeBreadcumbValue>([])
+  const [BreadcumbValue, setBreadcumbValue] = useState<typeBreadcumbProps>([])
+  const [DataBookLists, setDataBookLists] = useState<typeDataBookLists>([])
 
+  
   /**
    * Importing CSS
    */
@@ -27,6 +30,25 @@ export default function App({ Component, pageProps }: AppProps) {
     import('@/styles/externals/panels/corePanel.css')
   }
   import('@/styles/externals.scss')
+
+
+  /**
+   * use effect
+   */
+  useEffect(() => {
+    setDataBookLists([
+      {
+        id: Date.now(),
+        title: 'Book 1',
+        prolog: 'Hello World!'
+      },
+      {
+        id: Date.now() + 1,
+        title: 'Book 2',
+        prolog: 'Hello Panda!'
+      }
+    ])
+  }, [])
 
 
   /**
@@ -38,6 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
         UserAuthed: UserAuthed, setUserAuthed,
         StatusCode: StatusCode, setStatusCode,
         BreadcumbValue: BreadcumbValue, setBreadcumbValue,
+        DataBookLists: DataBookLists, setDataBookLists
       }}
     >
       {(() => {
@@ -48,11 +71,11 @@ export default function App({ Component, pageProps }: AppProps) {
         } else {
           return (
             <div className="main-layout">
-              <div className="flex overflow-auto">
+              <div className="flex">
                 <div>
                   <SidebarAdminApp />
                 </div>
-                <div className="grow">
+                <div className="container-fluid">
                   <HeaderAdminApp />
                   <main className="pb-[2rem]">
                     <Breadcrumb navigations={BreadcumbValue} />

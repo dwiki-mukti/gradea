@@ -2,22 +2,28 @@
 import Confirm from '@/components/externals/popup/Confirm';
 import Dropdown from '@/components/externals/popup/Dropdown';
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function HeaderAdminApp() {
+    useEffect(() => {
+        if (window.screen.width <= 1024) {
+            onClickSlider(true)
+        }
+    }, [])
+
     return (
         <>
             <header className="header">
                 <div className="flex items-center">
                     <div
                         className="header-icon-square"
-                        onClick={onClickSlider}>
+                        onClick={() => { onClickSlider() }}>
                         <i className="bi bi-justify-left text-lg"></i>
                     </div>
                 </div>
-                <div className="ml-auto flex items-center">
+                {/* <div className="ml-auto flex items-center">
                     <Profile />
-                </div>
+                </div> */}
             </header>
         </>
     )
@@ -75,13 +81,20 @@ function Profile() {
 /**
  * Handle toggle sidebar on click icon slider.
  */
-function onClickSlider() {
+function onClickSlider(isCollapse = false) {
     const sidebarEl = document.body.classList;
-    if (!sidebarEl.contains('sidebar-collapse')) {
-        sidebarEl.add('sidebar-collapse');
+    if (isCollapse) {
+        if (!sidebarEl.contains('sidebar-collapse')) {
+            sidebarEl.add('sidebar-collapse');
+        }
     } else {
-        sidebarEl.remove('sidebar-collapse');
+        if (!sidebarEl.contains('sidebar-collapse')) {
+            sidebarEl.add('sidebar-collapse');
+        } else {
+            sidebarEl.remove('sidebar-collapse');
+        }
     }
+
 }
 
 

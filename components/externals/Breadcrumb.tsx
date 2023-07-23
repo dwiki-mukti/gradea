@@ -1,11 +1,11 @@
-import { typeBreadcumbValue } from '@/interfaces/breadcumb';
+import { typeBreadcumbProps } from '@/interfaces/externals/breadcumb';
 import Link from 'next/link'
 import { NextRouter, useRouter } from 'next/router'
 import React from 'react'
 
 
 
-export default function Breadcrumb({ navigations }: { navigations?: typeBreadcumbValue }) {
+export default function Breadcrumb({ navigations }: { navigations?: typeBreadcumbProps }) {
     const router = useRouter();
     const controls = navigations?.length ? navigations : pathToNavigations(router);
 

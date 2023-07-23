@@ -46,7 +46,7 @@
 }
 
 .table-carded > tbody > tr > td {
-  @apply py-5;
+  @apply py-4 min-h-[60px];
 }
 
 /**

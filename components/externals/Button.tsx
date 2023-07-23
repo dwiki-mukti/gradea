@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 
 
-type MyButtonProps = {
+type typeButtonProps = {
     isLoading?: boolean,
     isResponsive?: boolean,
     text?: ReactNode
@@ -17,7 +17,7 @@ export default function Button({
     disabled,
     isResponsive,
     ...props
-}: (MyButtonProps)) {
+}: (typeButtonProps)) {
     return (
         <button className={`btn ${isLoading ? 'btn-loading' : ''} ${className ?? ''}`}
             {...props}

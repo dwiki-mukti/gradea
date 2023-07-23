@@ -20,8 +20,6 @@ export default function Dropdown({
     ref,
     ...props
 }: MyDropdownProps) {
-    const dropDown = useRef<HTMLDivElement>(null)
-
     return (
         <>
             {(show || justHidden) && (
@@ -30,7 +28,6 @@ export default function Dropdown({
                     <div
                         className={`absolute z-20 card ${className}`} //overflow-hidden
                         {...props}
-                        ref={dropDown}
                     >
                         {children}
                     </div >
