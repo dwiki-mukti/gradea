@@ -52,7 +52,7 @@ section,
 .bg-image,
 .bg-profile {
   background-position: center 0;
-  @apply bg-no-repeat bg-cover bg-gray-600/50;
+  @apply bg-no-repeat bg-cover;
 }
 
 .bg-profile {
@@ -65,15 +65,17 @@ section,
  *
  * INPUT FORM 
  */
-.input-group {
-  @apply mt-4;
+.input-group:not(.float-label) {
+  @apply md:mt-4;
 }
 
 .input-group > label {
   @apply bg-white inline-block capitalize cursor-pointer;
   @apply ml-2 translate-y-[9px] text-xs px-1 font-semibold;
-  @apply md:ml-0 md:mb-1 md:translate-y-0 md:text-sm;
   color: var(--color-label);
+}
+.input-group:not(.float-label) > label {
+  @apply md:ml-0 md:mb-1 md:translate-y-0 md:text-sm;
 }
 
 .input-group > textarea,

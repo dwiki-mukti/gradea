@@ -1,8 +1,8 @@
 import { typeStateInput, typeValidations } from '@/interfaces/externals/input'
-import React, { DetailedHTMLProps, Dispatch, FormEvent, InputHTMLAttributes, ReactNode, SetStateAction, useEffect } from 'react'
+import React, { DetailedHTMLProps, Dispatch, FormEvent, InputHTMLAttributes, ReactNode, SetStateAction, useEffect, useState } from 'react'
 import validator from './validatorUtils'
 
-export interface typeInputTextProps extends Omit<DetailedHTMLProps<
+export interface typeInputPasswordProps extends Omit<DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
 >, 'value' | 'defaultValue' | 'type'> {
@@ -14,7 +14,7 @@ export interface typeInputTextProps extends Omit<DetailedHTMLProps<
     name: string,
 }
 
-function InputText({
+function InputPassword({
     label,
     setter,
     getter,
@@ -27,7 +27,11 @@ function InputText({
     id,
 
     ...props
-}: typeInputTextProps) {
+}: typeInputPasswordProps) {
+    /**
+     * State declaration
+     */
+    const [IsVisible, setIsVisible] = useState(false)
 
     /**
      * Function Handler
@@ -58,7 +62,7 @@ function InputText({
                 id={id ?? name}
                 name={name}
                 {...props}
-                type="text"
+                type={IsVisible ? 'text' : 'password'}
             />
             {Boolean(getter?.invalids?.[name]?.length) && (
                 <div className='invalid-message'>{getter?.invalids?.[name][0]}</div>
@@ -67,4 +71,4 @@ function InputText({
     )
 }
 
-export default InputText
+export default InputPassword
