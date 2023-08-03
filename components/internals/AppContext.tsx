@@ -1,6 +1,4 @@
-import { typeBreadcumbProps } from "@/interfaces/externals/breadcumb";
-import { typeUserAuthed } from "@/interfaces/externals/userAuthed";
-import { typeDataBookLists } from "@/interfaces/internals/dataBookLists";
+
 import React, { Dispatch, SetStateAction } from "react";
 
 
@@ -26,5 +24,5 @@ export const AppContext = React.createContext<typeContextProps & customTypeConte
     BreadcumbValue: [],
     setBreadcumbValue: () => { },
     DataBookLists: [],
-    setDataBookLists: () => { }
+    setDataBookLists: () => { },
 });

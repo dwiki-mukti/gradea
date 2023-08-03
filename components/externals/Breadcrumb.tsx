@@ -1,4 +1,4 @@
-import { typeBreadcumbProps } from '@/interfaces/externals/breadcumb';
+
 import Link from 'next/link'
 import { NextRouter, useRouter } from 'next/router'
 import React from 'react'

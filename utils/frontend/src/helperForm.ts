@@ -1,4 +1,4 @@
-import { typeFieldInput, typeStateInput } from "@/interfaces/externals/input";
+
 
 
 export function checkFormIsValid({ getter, fields }: { getter: typeStateInput, fields: typeFieldInput[] }) {

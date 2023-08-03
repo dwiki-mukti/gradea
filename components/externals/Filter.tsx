@@ -1,7 +1,6 @@
 import React, { Dispatch, ReactNode, SetStateAction, useState } from 'react'
 import Button from './Button'
 import Mark from './Mark'
-import { typeStateInput } from '@/interfaces/externals/input'
 import Modal from './popup/Modal'
 import HeaderModal from './popup/HeaderModal'
 

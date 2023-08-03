@@ -1,28 +1,27 @@
 import Breadcrumb from '@/components/externals/Breadcrumb'
+import { AppContext } from '@/components/internals/AppContext'
 import HeaderAdminApp from '@/components/internals/adminApp/HeaderAdminApp'
 import SidebarAdminApp from '@/components/internals/adminApp/SidebarAdminApp'
-import { typeBreadcumbProps } from '@/interfaces/externals/breadcumb'
-import { typeUserAuthed } from '@/interfaces/externals/userAuthed'
-import { typeDataBookLists } from '@/interfaces/internals/dataBookLists'
-import { AppContext } from '@/utils/frontend'
+import { api } from '@/utils/frontend'
 import type { AppProps } from 'next/app'
 import Error from 'next/error'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
-export default function App({ Component, pageProps }: AppProps) {
+
+
+/**
+ * @App
+ * 
+ * 
+ * Main Function
+ */
+function App({ children }: { children: ReactNode }) {
   const router = useRouter()
   const prefix = String(router.pathname).split('/')[1]
 
-  /**
-   * State Declaration
-   */
-  const [UserAuthed, setUserAuthed] = useState<typeUserAuthed>({});
-  const [StatusCode, setStatusCode] = useState<number>(200);
-  const [BreadcumbValue, setBreadcumbValue] = useState<typeBreadcumbProps>([])
-  const [DataBookLists, setDataBookLists] = useState<typeDataBookLists>([])
 
-  
   /**
    * Importing CSS
    */
@@ -33,22 +32,29 @@ export default function App({ Component, pageProps }: AppProps) {
 
 
   /**
-   * use effect
+   * State Declaration
+   */
+  const [UserAuthed, setUserAuthed] = useState<typeUserAuthed>({});
+  const [StatusCode, setStatusCode] = useState<number>(200);
+  const [BreadcumbValue, setBreadcumbValue] = useState<typeBreadcumbProps>([])
+  const [DataBookLists, setDataBookLists] = useState<typeDataBookLists>([])
+
+
+  /**
+   * Load data
+   */
+  async function fetcher() {
+    return (await api({ url: '/books.json' })).json()
+  }
+  const { data } = useQuery('bookApi', fetcher);
+
+
+  /**
+   * Use Effect
    */
   useEffect(() => {
-    setDataBookLists([
-      {
-        id: Date.now(),
-        title: 'Book 1',
-        prolog: 'Hello World!'
-      },
-      {
-        id: Date.now() + 1,
-        title: 'Book 2',
-        prolog: 'Hello Panda!'
-      }
-    ])
-  }, [])
+    setDataBookLists(data);
+  }, [data])
 
 
   /**
@@ -67,7 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
         if (![200, 202, 422].includes(StatusCode)) {
           return <Error statusCode={StatusCode} />
         } else if ((router.route == '/_error') || !['admin'].includes(prefix)) {
-          return <Component {...pageProps} />
+          return children
         } else {
           return (
             <div className="main-layout">
@@ -79,7 +85,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   <HeaderAdminApp />
                   <main className="pb-[2rem]">
                     <Breadcrumb navigations={BreadcumbValue} />
-                    <Component {...pageProps} />
+                    {children}
                   </main>
                 </div>
               </div>
@@ -87,6 +93,45 @@ export default function App({ Component, pageProps }: AppProps) {
           )
         }
       })()}
-    </AppContext.Provider >
+    </AppContext.Provider>
   )
 }
+
+
+
+
+/**
+ * @HigherOrderApp
+ * 
+ * 
+ * Init React Query Client
+ */
+function HigherOrderApp({ Component, pageProps }: AppProps) {
+  /**
+   * Init result
+   */
+  var result = (
+    <App>
+      <Component {...pageProps} />
+    </App>
+  )
+
+  /**
+   * Init react query
+   */
+  result = QueryClientProvider({
+    client: new QueryClient(),
+    children: result
+  })
+
+  /**
+   * Render result
+   */
+  return result
+}
+
+
+
+
+
+export default HigherOrderApp

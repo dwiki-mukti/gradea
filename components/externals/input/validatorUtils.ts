@@ -1,4 +1,3 @@
-import { typeValidations } from "@/interfaces/externals/input";
 
 
 export default function validator({

@@ -1,6 +1,6 @@
-import { objectToQueryUrl } from './general';
+import { objectToQueryUrl } from '../../general';
 import { getCookie, removeCookie } from 'typescript-cookie';
-const API_URL = process.env.NEXT_PUBLIC_BFF_URL;
+const API_URL = process.env.NEXT_PUBLIC_BFF_URL ?? '';
 
 
 

@@ -1,4 +1,4 @@
-import { typeStateInput, typeValidations } from '@/interfaces/externals/input'
+
 import React, { DetailedHTMLProps, Dispatch, FormEvent, InputHTMLAttributes, ReactNode, SetStateAction, useEffect, useState } from 'react'
 import validator from './validatorUtils'
 

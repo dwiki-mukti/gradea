@@ -1,4 +1,4 @@
-import { typeFieldInput } from '@/interfaces/externals/input'
+
 import InputText, { typeInputTextProps } from './InputText'
 import TextArea, { typeTextAreaProps } from './TextArea'
 

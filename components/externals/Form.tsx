@@ -1,6 +1,5 @@
 
 import { Dispatch, FormEvent, FormEventHandler, SetStateAction } from 'react'
-import { typeFieldInput, typeStateInput } from '@/interfaces/externals/input'
 import Button from './Button'
 import Input from './input/Input'
 

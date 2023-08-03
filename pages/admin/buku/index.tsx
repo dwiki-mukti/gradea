@@ -1,12 +1,11 @@
 import Button from '@/components/externals/Button'
 import Filter from '@/components/externals/Filter'
 import Table from '@/components/externals/Table'
-import { typeDataBookLists } from '@/interfaces/internals/dataBookLists'
-import { AppContext } from '@/utils/frontend'
+import { AppContext } from '@/components/internals/AppContext'
 import Link from 'next/link'
 import React, { useContext, useState } from 'react'
 
-function HomePage() {
+function BookHomePage() {
   const { DataBookLists, setDataBookLists } = useContext(AppContext)
 
   /**
@@ -67,4 +66,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default BookHomePage
